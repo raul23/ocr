@@ -266,7 +266,7 @@ def convert(input_file, output_file=None,
     file_hash = None
     mime_type = get_mime_type(input_file)
     if mime_type == 'text/plain':
-        logger.debug('The file is already in .txt')
+        logger.warning(yellow('The file is already in .txt'))
         # Return text if no output file was specified
         if output_file is None:
             with open(input_file, 'r') as f:
@@ -621,7 +621,6 @@ def setup_log(quiet=False, verbose=False, logging_level=LOGGING_LEVEL,
 
 # OCR: convert image to text
 def tesseract_wrapper(input_file, output_file):
-    # cmd = 'tesseract INPUT_FILE stdout --psm 12 > OUTPUT_FILE || exit 1
     cmd = f'tesseract "{input_file}" stdout --psm 12'
     args = shlex.split(cmd)
     result = subprocess.run(args,
