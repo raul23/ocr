@@ -17,8 +17,8 @@ This is the environment on which the script `ocr.py <./scripts/ocr.py>`_ was tes
   
   `:warning:` OCR is a slow resource-intensive process. Hence, use the option ``-p PAGES`` to specify the pages
   that you want to apply OCR. More info at `Script options <#script-options>`_.
-* `Ghostscript <https://www.ghostscript.com/>`_: **v9.53.3**, ``gs`` converts *pdf* to *png*
-* `DjVuLibre <http://djvu.sourceforge.net/>`_: **v3.5.27**, it includes ``ddjvu`` for 
+* `Ghostscript <https://www.ghostscript.com/>`_: ``gs`` converts *pdf* to *png*
+* `DjVuLibre <http://djvu.sourceforge.net/>`_: it includes ``ddjvu`` for 
   converting *djvu* to *tif* image, and ``djvused`` to get number of pages from a *djvu* document
 
 **Optionally:**
