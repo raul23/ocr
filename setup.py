@@ -16,6 +16,8 @@ if sys.version_info < (3, 7):
     ocr v0.1.0+ supports Python 3.7 and above. 
     """)
 
+excluded = []
+    
 
 # IMPORTANT: bdist_wheel behaves differently to sdist
 # - MANIFEST.in works for source distributions, but it's ignored for wheels,
