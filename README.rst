@@ -52,5 +52,8 @@ To display the script's list of options and their descriptions::
    input                                   Path of the file (pdf, djvu or image) that will be OCRed.
    output                                  Path of the file (pdf, djvu or image) that will be OCRed.
 
+`:information_source:` The ``-p, --pages`` option is taking straight from `djvutxt <https://man.archlinux.org/man/djvutxt.1.en>`_ 
+option ``--page=pagespec``.
+
 Examples
 ========
