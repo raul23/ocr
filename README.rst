@@ -1,6 +1,11 @@
 =================================
 OCR documents (pdf, djvu, images)
 =================================
+.. contents:: **Contents**
+   :depth: 3
+   :local:
+   :backlinks: top
+
 Dependencies
 ============
 This is the environment on which the script `ocr.py <./scripts/ocr.py>`_ was tested:
