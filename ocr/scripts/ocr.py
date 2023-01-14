@@ -191,9 +191,9 @@ def setup_argparser():
         not specified, the text of all pages of the documents is concatenated
         into the output file. The page specification PAGES contains one or more
         comma-separated page ranges. A page range is either a page number, or
-        two page numbers separated by a dash. For instance, specification 1-10 
+        two page numbers separated by a dash. For instance, specification 1-10
         outputs pages 1 to 10, and specification 1,3,99999-4 outputs pages 1
-        and 3, followed by all the document pages in reverse order up to page 
+        and 3, followed by all the document pages in reverse order up to page
         4." Ref.: https://man.archlinux.org/man/djvutxt.1.en""")
     # ==================
     # Input/output files
@@ -208,6 +208,14 @@ def setup_argparser():
         help='Path of the output txt file.'
              + get_default_message(OUTPUT_FILE))
     return parser
+
+
+def show_exit_code(exit_code):
+    msg = f'Program exited with {exit_code}'
+    if exit_code == 1:
+        logger.error(red(f'{msg}'))
+    else:
+        logger.debug(msg)
 
 
 def main():
@@ -230,13 +238,11 @@ def main():
         print_(yellow('Program interrupted!'))
         logger.exception(e)
         exit_code = 1
+    if __name__ != '__main__':
+        show_exit_code(exit_code)
     return exit_code
 
 
 if __name__ == '__main__':
     retcode = main()
-    msg = f'Program exited with {retcode}'
-    if retcode == 1:
-        logger.error(red(f'{msg}'))
-    else:
-        logger.debug(msg)
+    show_exit_code(retcode)
