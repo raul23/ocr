@@ -28,7 +28,7 @@ This is the environment on which the script `ocr.py <./scripts/ocr.py>`_ was tes
 
 Script options
 ==============
-To display the script `ocr.py <./scripts/ocr.py>`_'s list of options and their descriptions::
+To display the script `ocr.py <./scripts/ocr.py>`_ list of options and their descriptions::
 
  $ python ocr.py -h
  usage: python ocr.py [OPTIONS] {input_file} [{output_file}]
