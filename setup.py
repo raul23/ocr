@@ -9,7 +9,7 @@ import sys
 from setuptools import find_packages, setup
 from setuptools.command.build_py import build_py as build_py_orig
 
-from scripts.ocr import __version__
+from ocr import __version__, __test_version__
 
 if sys.version_info < (3, 7):
     raise RuntimeError("""
@@ -84,7 +84,7 @@ setup(name='ocr',
       include_package_data=True,
       install_requires=REQUIREMENTS,
       entry_points={
-        'console_scripts': ['ocr=scripts.ocr:main']
+        'console_scripts': ['ocr=ocr.scripts.ocr:main']
       },
       project_urls={  # Optional
           'Bug Reports': 'https://github.com/raul23/ocr/issues',
