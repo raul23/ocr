@@ -57,7 +57,7 @@ To display the script's list of options and their descriptions::
 
 `:information_source:` Explaining some of the options/arguments
 
-- The ``-p, --pages`` option is taking straight from `djvutxt <https://man.archlinux.org/man/djvutxt.1.en>`_ option ``--page=pagespec``.
+- The option ``-p, --pages`` is taken straight from `djvutxt <https://man.archlinux.org/man/djvutxt.1.en>`_ option ``--page=pagespec``.
 - ``input`` and ``output`` are positional arguments. Thus they must follow directly each other. ``output`` is not required since by
   default the output ``txt`` file will be saved as ``output.txt`` directly under the working directory. 
 
