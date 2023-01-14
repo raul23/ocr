@@ -79,7 +79,7 @@ Here are the steps that the script ``ocr.py`` follows when applying OCR to a giv
    ii. Convert the image to *txt* through the ``tesseract`` command
    iii. Concatenate the *txt* page with the rest of the converted *txt* pages
 6. Save all the converted *txt* pages to the output file.
-7. The output *txt* file is checked if it actually contains text. If it doesn't, it warns the user that the OCR failed.
+7. The output *txt* file is checked if it actually contains text. If it doesn't, it warns the user that OCR failed.
 
 Example: convert a ``pdf`` file to ``txt``
 ==========================================
