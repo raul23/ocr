@@ -547,7 +547,7 @@ def setup_argparser():
     msg = 'OCR documents (pdf, djvu or images)'
     parser = ArgumentParser(
         description="",
-        usage=f"{COLORS['BLUE']}python %(prog)s [OPTIONS] {{{name_input}}} "
+        usage=f"{COLORS['BLUE']} %(prog)s [OPTIONS] {{{name_input}}} "
               f"[{{{name_output}}}]{COLORS['NC']}\n\n{msg}",
         add_help=False,
         formatter_class=lambda prog: MyFormatter(
@@ -666,4 +666,3 @@ if __name__ == '__main__':
         logger.error(red(f'{msg}'))
     else:
         logger.debug(msg)
-
