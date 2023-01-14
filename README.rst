@@ -55,10 +55,8 @@ To display the script's list of options and their descriptions::
 `:information_source:` The ``-p, --pages`` option is taking straight from `djvutxt <https://man.archlinux.org/man/djvutxt.1.en>`_ 
 option ``--page=pagespec``.
 
-Examples
-========
-Example 1: convert a pdf file to text
--------------------------------------
+Example: convert a ``pd``f file to ``txt``
+==========================================
 Let's say a ``pdf`` file is made up of images and you want to convert specific pages of said ``pdf`` 
 file to ``txt``, then the following command will do the trick::
 
