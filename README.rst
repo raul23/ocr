@@ -8,7 +8,7 @@ OCR documents (pdf, djvu, images)
 
 Dependencies
 ============
-This is the environment on which the script `ocr.py <./scripts/ocr.py>`_ was tested:
+This is the environment on which the script `ocr.py <./ocr/scripts/ocr.py>`_ was tested:
 
 * **Platform:** macOS
 * **Python**: version **3.7**
@@ -28,7 +28,7 @@ This is the environment on which the script `ocr.py <./scripts/ocr.py>`_ was tes
 
 Script options
 ==============
-To display the script `ocr.py <./scripts/ocr.py>`_ list of options and their descriptions::
+To display the script `ocr.py <./ocr/scripts/ocr.py>`_ list of options and their descriptions::
 
  $ python ocr.py -h
  usage: python ocr.py [OPTIONS] {input_file} [{output_file}]
@@ -69,7 +69,7 @@ To display the script `ocr.py <./scripts/ocr.py>`_ list of options and their des
 
 How OCR is applied
 ==================
-Here are the important steps that the script `ocr.py <./scripts/ocr.py>`_ follows when applying OCR to a given document:
+Here are the important steps that the script `ocr.py <./ocr/scripts/ocr.py>`_ follows when applying OCR to a given document:
 
 1. If the given document is already in *.txt*, then no need to go further!
 2. If it is an image, then OCR is applied directly through the ``tesseract`` command.
