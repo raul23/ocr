@@ -70,16 +70,16 @@ How OCR is applied
 Here are the steps that the script ``ocr.py`` follows when applying OCR to a given document:
 
 1. If the given document is already in *.txt*, then no need to go further!
-3. If it is an image, then OCR is applied directly through the ``tesseract`` command.
-4. If it is neither a *djvu* nor a *pdf* file, OCR is abruptly ended with an error.
-5. The specifc pages to be OCRed are computed from the option ``-p, --pages PAGES``,
-6. For each page from the given document:
+2. If it is an image, then OCR is applied directly through the ``tesseract`` command.
+3. If it is neither a *djvu* nor a *pdf* file, OCR is abruptly ended with an error.
+4. The specifc pages to be OCRed are computed from the option ``-p, --pages PAGES``,
+5. For each page from the given document:
 
-  i. Convert the page (*djvu* or *pdf*) to an image (*png* or *tif*) through the command ``gs`` (for *pdf*) or ``ddjvu`` (*djvu*)
-  ii. Convert the image to *txt* through the ``tesseract`` command
-  iii. Concatenate the *txt* page with the rest of the converted *txt* pages
-7. Save all the converted *txt* pages to the output file.
-8. The output *txt* file is checked if it actually contains text. If it doesn't, it warns the user that the OCR failed.
+   i. Convert the page (*djvu* or *pdf*) to an image (*png* or *tif*) through the command ``gs`` (for *pdf*) or ``ddjvu`` (*djvu*)
+   ii. Convert the image to *txt* through the ``tesseract`` command
+   iii. Concatenate the *txt* page with the rest of the converted *txt* pages
+6. Save all the converted *txt* pages to the output file.
+7. The output *txt* file is checked if it actually contains text. If it doesn't, it warns the user that the OCR failed.
 
 Example: convert a ``pdf`` file to ``txt``
 ==========================================
