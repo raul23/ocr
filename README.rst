@@ -75,7 +75,7 @@ Here are the steps that the script ``ocr.py`` follows when applying OCR to a giv
 4. The specifc pages to be OCRed are computed from the option ``-p, --pages PAGES``.
 5. For each page from the given document:
 
-   i. Convert the page (*djvu* or *pdf*) to an image (*png* or *tif*) through the command ``gs`` (for *pdf*) or ``ddjvu`` (*djvu*)
+   i. Convert the page (*djvu* or *pdf*) to an image (*png* or *tif*) through the command ``gs`` (for *pdf*) or ``ddjvu`` (for *djvu*)
    ii. Convert the image to *txt* through the ``tesseract`` command
    iii. Concatenate the *txt* page with the rest of the converted *txt* pages
 6. Save all the converted *txt* pages to the output file.
