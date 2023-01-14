@@ -10,9 +10,10 @@ import subprocess
 import tempfile
 from pathlib import Path
 
-# import ipdb
+import ipdb
 
 logger = logging.getLogger('ocr')
+logger.setLevel(logging.CRITICAL + 1)
 __version__ = '0.1'
 
 # =====================
@@ -260,9 +261,7 @@ def convert(input_file, output_file=None,
             ocr_command=OCR_COMMAND,
             ocr_pages=OCR_PAGES,
             **kwargs):
-    # also setup cache outside
     func_params = locals().copy()
-    check_conversion = True
     file_hash = None
     mime_type = get_mime_type(input_file)
     if mime_type == 'text/plain':
@@ -294,7 +293,6 @@ def convert(input_file, output_file=None,
             touch(output_file)
     func_params['mime_type'] = mime_type
     func_params['output_file'] = output_file
-    # check_conversion = False
     logger.info("Starting OCR...")
     if ocr_file(input_file, output_file, mime_type, ocr_command, ocr_pages):
         logger.error(f'{red("OCR failed!")}')
@@ -303,17 +301,16 @@ def convert(input_file, output_file=None,
         logger.debug("ocr_file() returned 0")
     # Check conversion
     logger.debug('Checking converted text...')
-    if check_conversion:
-        if isalnum_in_file(output_file):
-            logger.debug("Converted text is valid!")
-        else:
-            logger.error(red("Conversion failed!"))
-            logger.error(red(f'The converted txt with size {os.stat(output_file).st_size} '
-                             'bytes does not seem to contain text'))
-            # Only remove output file if it is a temp file (i.e. return_txt = True)
-            if return_txt:
-                remove_file(output_file)
-            return 1
+    if isalnum_in_file(output_file):
+        logger.debug("Converted text is valid!")
+    else:
+        logger.error(red("Conversion failed!"))
+        logger.error(red(f'The converted txt with size {os.stat(output_file).st_size} '
+                         'bytes does not seem to contain text'))
+        # Only remove output file if it is a temp file (i.e. return_txt = True)
+        if return_txt:
+            remove_file(output_file)
+        return 1
     logger.info(blue("OCR successful!"))
     # Only remove output file if it is a temp file (i.e. return_txt = True)
     if return_txt:
