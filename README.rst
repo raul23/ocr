@@ -105,4 +105,3 @@ Sample output::
  Output text file already exists: Book.txt
  Starting OCR...
  OCR successful!
-
