@@ -279,16 +279,20 @@ def convert(input_file, output_file=None,
             **kwargs):
     # also setup cache outside
     func_params = locals().copy()
-    statuscode = 0
     check_conversion = True
     file_hash = None
     mime_type = get_mime_type(input_file)
     if mime_type == 'text/plain':
         logger.debug('The file is already in .txt')
-        with open(input_file, 'r') as f:
-            text = f.read()
-        return text
+        # Return text if no output file was specified
+        if output_file is None:
+            with open(input_file, 'r') as f:
+                text = f.read()
+            return text
+        else:
+            return 0
     return_txt = False
+    # Create temp output file if output file not specified by user
     if output_file is None:
         return_txt = True
         output_file = tempfile.mkstemp(suffix='.txt')[1]
@@ -296,7 +300,7 @@ def convert(input_file, output_file=None,
         output_file = Path(output_file)
         # Check first that the output text file is valid
         if output_file.suffix != '.txt':
-            logger.error(red("[ERROR] The output file needs to have a .txt extension!"))
+            logger.error(red("The output file needs to have a .txt extension!"))
             return 1
         # Create output file text if it doesn't exist
         if output_file.exists():
@@ -310,23 +314,25 @@ def convert(input_file, output_file=None,
     # check_conversion = False
     logger.info("Starting OCR...")
     if ocr_file(input_file, output_file, mime_type, ocr_command, ocr_pages):
-        logger.info(f"{COLORS['YELLOW']}OCR failed!{COLORS['NC']}")
+        logger.error(f'{red("OCR failed!")}')
+        return 1
     else:
-        # logger.info("OCR successful!")
-        statuscode = 0
+        logger.debug("ocr_file() returned 0")
     # Check conversion
     logger.debug('Checking converted text...')
     if check_conversion:
-        if statuscode == 0 and isalnum_in_file(output_file):
+        if isalnum_in_file(output_file):
             logger.debug("Converted text is valid!")
         else:
-            logger.warning(yellow("[WARNING] Conversion failed!"))
-            if not isalnum_in_file(output_file):
-                logger.warning(yellow(f'[WARNING] The converted txt with size {os.stat(output_file).st_size} '
-                                      'bytes does not seem to contain text'))
-            remove_file(output_file)
+            logger.error(red("Conversion failed!"))
+            logger.error(red(f'The converted txt with size {os.stat(output_file).st_size} '
+                             'bytes does not seem to contain text'))
+            # Only remove output file if it is a temp file (i.e. return_txt = True)
+            if return_txt:
+                remove_file(output_file)
             return 1
-    assert statuscode == 0
+    logger.info(blue("OCR successful!"))
+    # Only remove output file if it is a temp file (i.e. return_txt = True)
     if return_txt:
         with open(output_file, 'r', encoding="utf8", errors='ignore') as f:
             text = f.read()
@@ -475,17 +481,25 @@ def ocr_file(file_path, output_file, mime_type,
             logger.debug(f"Result of '{ocr_command}':\n{result}")
             return 0
         else:
-            logger.debug(f"Function '{ocr_command}' doesn't exit. Ending ocr.")
+            msg = red("Function '{ocr_command}' doesn't exit.")
+            logger.error(f'{msg}')
             return 1
     else:
-        logger.info(f"Unsupported mime type '{mime_type}'!")
-        return 2
-
-    if ocr_command not in globals():
-        logger.debug(f"Function '{ocr_command}' doesn't exit. Ending ocr.")
+        logger.error(f"{red('Unsupported mime type')} '{mime_type}'!")
         return 1
 
-    logger.debug(f"Will run OCR on file '{file_path}' with {num_pages} page{'s' if num_pages > 1 else ''}...")
+    if result.returncode == 1:
+        err_msg = result.stdout if result.stdout else result.stderr
+        msg = "Couldn't get number of pages:"
+        logger.error(f"{red(msg)} '{str(err_msg).strip()}'")
+        return 1
+
+    if ocr_command not in globals():
+        msg = red("Function '{ocr_command}' doesn't exit.")
+        logger.error(f'{msg}')
+        return 1
+
+    logger.debug(f"The file '{file_path}' has {num_pages} page{'s' if num_pages > 1 else ''}")
     logger.debug(f'mime type: {mime_type}')
 
     # Pre-compute the list of pages to process based on ocr_pages
@@ -504,7 +518,7 @@ def ocr_file(file_path, output_file, mime_type,
             else:
                 pages_to_process.append(int(p))
     else:
-        logger.debug('ocr_pages is False')
+        logger.warning(f"{yellow('OCR will be applied to all ({pages}) pages of the document')}")
         pages_to_process = [i for i in range(1, num_pages+1)]
     logger.debug(f'Pages to process: {pages_to_process}')
 
@@ -518,15 +532,25 @@ def ocr_file(file_path, output_file, mime_type,
         logger.debug(f'Using tmp files {tmp_file} and {tmp_file_txt}')
         # doc(pdf, djvu) --> image(png, tiff)
         result = page_convert_cmd(page, file_path, tmp_file)
-        logger.debug(f"Result of {page_convert_cmd.__name__}():\n{result}")
-        # image --> text
-        logger.debug(f"Running the '{ocr_command}'...")
-        result = eval(f'{ocr_command}("{tmp_file}", "{tmp_file_txt}")')
-        logger.debug(f"Result of '{ocr_command}':\n{result}")
-        with open(tmp_file_txt, 'r') as f:
-            data = f.read()
-            # logger.debug(f"Text content of page {page}:\n{data}")
-        text += data
+        if result.returncode == 0:
+            logger.debug(f"Result of {page_convert_cmd.__name__}():\n{result}")
+            # image --> text
+            logger.debug(f"Running the '{ocr_command}'...")
+            result = eval(f'{ocr_command}("{tmp_file}", "{tmp_file_txt}")')
+            if result.returncode == 0:
+                logger.debug(f"Result of '{ocr_command}':\n{result}")
+                with open(tmp_file_txt, 'r') as f:
+                    data = f.read()
+                    # logger.debug(f"Text content of page {page}:\n{data}")
+                text += data
+            else:
+                msg = red(f"Document couldn't be converted to image: {result}")
+                logger.error(f'{msg}')
+                logger.error(f'Skipping current page ({page})')
+        else:
+            msg = red(f"Image couldn't be converted to text: {result}")
+            logger.error(f'{msg}')
+            logger.error(f'Skipping current page ({page})')
         # Remove temporary files
         logger.debug('Cleaning up tmp files')
         remove_file(tmp_file)
@@ -558,7 +582,7 @@ def remove_file(file_path):
         os.remove(file_path)
         return 0
     except OSError as e:
-        logger.error(red(f'[ERROR] {e.filename} - {e.strerror}.'))
+        logger.error(red(f'{e.filename} - {e.strerror}.'))
         return 1
 
 
@@ -725,6 +749,6 @@ if __name__ == '__main__':
     retcode = main()
     msg = f'Program exited with {retcode}'
     if retcode == 1:
-        logger.error(red(f'[ERROR] {msg}'))
+        logger.error(red(f'{msg}'))
     else:
         logger.debug(msg)
