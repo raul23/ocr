@@ -28,7 +28,7 @@ This is the environment on which the script `ocr.py <./ocr/scripts/ocr.py>`_ was
 
 Installation
 ============
-To install the `ocr`_ package::
+To install the `ocr <./ocr/>`_ package::
 
  $ pip install git+https://github.com/raul23/ocr#egg=ocr
  
