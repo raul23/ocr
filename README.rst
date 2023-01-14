@@ -108,7 +108,7 @@ Through the script ``ocr.py``
 Let's say a ``pdf`` file is made up of images and you want to convert specific pages of said ``pdf`` 
 file to ``txt``, then the following command will do the trick::
 
- python ocr.py -p 23-30,50,90-92 ~/Data/ocr/Book.pdf Book.txt
+ ocr -p 23-30,50,90-92 ~/Data/ocr/Book.pdf Book.txt
  
 `:information_source:` Explaining the command
 
