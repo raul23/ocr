@@ -1,7 +1,4 @@
-"""setup.py file for the ``pyebooktools`` package.
-
-``pyebooktools`` is both the PyPi project name and package name.
-
+"""setup.py file for the ``ocr`` package.
 """
 import fnmatch
 import os
