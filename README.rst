@@ -74,3 +74,10 @@ file to ``txt``, then the following command will do the trick::
 
   **NOTE:** by default if no output file is specified, then the converted text will be saved as ``output.txt`` 
   directly under the working directory.
+
+Sample output::
+
+ Output text file already exists: Book.txt
+ Starting OCR...
+ OCR successful!
+
