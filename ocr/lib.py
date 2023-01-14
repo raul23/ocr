@@ -363,11 +363,11 @@ def ocr_file(file_path, output_file, mime_type,
                     # logger.debug(f"Text content of page {page}:\n{data}")
                 text += data
             else:
-                msg = red(f"Document couldn't be converted to image: {result}")
+                msg = red(f"Image couldn't be converted to text: {result}")
                 logger.error(f'{msg}')
                 logger.error(f'Skipping current page ({page})')
         else:
-            msg = red(f"Image couldn't be converted to text: {result}")
+            msg = red(f"Document couldn't be converted to image: {result}")
             logger.error(f'{msg}')
             logger.error(f'Skipping current page ({page})')
         # Remove temporary files
