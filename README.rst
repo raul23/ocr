@@ -72,7 +72,7 @@ Here are the steps that the script ``ocr.py`` follows when applying OCR to a giv
 1. If the given document is already in *.txt*, then no need to go further!
 2. If it is an image, then OCR is applied directly through the ``tesseract`` command.
 3. If it is neither a *djvu* nor a *pdf* file, OCR is abruptly ended with an error.
-4. The specifc pages to be OCRed are computed from the option ``-p, --pages PAGES``,
+4. The specifc pages to be OCRed are computed from the option ``-p, --pages PAGES``.
 5. For each page from the given document:
 
    i. Convert the page (*djvu* or *pdf*) to an image (*png* or *tif*) through the command ``gs`` (for *pdf*) or ``ddjvu`` (*djvu*)
