@@ -48,8 +48,8 @@ Script options
 ==============
 To display the script `ocr.py <./ocr/scripts/ocr.py>`_ list of options and their descriptions::
 
- $ python ocr.py -h
- usage: python ocr.py [OPTIONS] {input_file} [{output_file}]
+ $ ocr -h
+ usage: ocr [OPTIONS] {input_file} [{output_file}]
 
  General options:
    -h, --help                              Show this help message and exit.
