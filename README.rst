@@ -53,10 +53,13 @@ To display the script's list of options and their descriptions::
 
  Input/Output files:
    input                                   Path of the file (pdf, djvu or image) that will be OCRed.
-   output                                  Path of the file (pdf, djvu or image) that will be OCRed.
+   output                                  Path of the output txt file. (default: output.txt)
 
-`:information_source:` The ``-p, --pages`` option is taking straight from `djvutxt <https://man.archlinux.org/man/djvutxt.1.en>`_ 
-option ``--page=pagespec``.
+`:information_source:` Explaining some of the options/arguments
+
+- The ``-p, --pages`` option is taking straight from `djvutxt <https://man.archlinux.org/man/djvutxt.1.en>`_ option ``--page=pagespec``.
+- ``input`` and ``output`` are positional arguments. Thus they must follow directly each other. ``output`` is not required since by
+  default the output ``txt`` file will be saved as ``output.txt`` directly under the working directory. 
 
 Example: convert a ``pdf`` file to ``txt``
 ==========================================
