@@ -44,6 +44,12 @@ To install the `ocr <./ocr/>`_ package::
 
    $ ocr --version
 
+Uninstall
+=========
+To uninstall the `ocr <./ocr/>`_ package::
+
+ $ pip uninstall ocr
+
 Script options
 ==============
 To display the script `ocr.py <./ocr/scripts/ocr.py>`_ list of options and their descriptions::
