@@ -148,8 +148,8 @@ To convert a *pdf* file to *txt* using the API:
 - ``convert(input_file, output_file=None, ocr_command=OCR_COMMAND, ocr_pages=OCR_PAGES)``:
 
   By default ``output_file`` is None and hence ``convert()`` will return the text from the conversion. 
-  If you set ``output_file`` to for example ``output.txt``, then ``convert()`` will just return a status code
-  (1 for error and 0 for success) and will write the text from the conversion to ``output.txt``.
+  If you set ``output_file`` to for example **output.txt**, then ``convert()`` will just return a status code
+  (1 for error and 0 for success) and will write the text from the conversion to **output.txt**.
 - The variable ``txt`` will contain the text from the conversion.
 
 By default when using the API, the loggers are disabled. If you want to enable them, use the
