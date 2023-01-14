@@ -3,8 +3,8 @@ import argparse
 import logging
 import os
 
-from lib import convert, blue, green, red, yellow, OCR_PAGES
 from ocr import __version__
+from ocr.lib import convert, blue, green, red, yellow, OCR_PAGES
 # __version__ = '0.1.0'
 
 # import ipdb
