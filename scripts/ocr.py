@@ -4,7 +4,6 @@ import hashlib
 import logging
 import mimetypes
 import os
-import random
 import re
 import shlex
 import shutil
@@ -14,11 +13,7 @@ from argparse import Namespace
 from pathlib import Path
 from types import SimpleNamespace
 
-import regex
-
 import ipdb
-
-RE_BAD_CHARS = regex.compile(r"[\p{Cc}\p{Cs}]+")
 
 logger = logging.getLogger('clustering')
 __version__ = '0.1'
