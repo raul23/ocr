@@ -26,6 +26,24 @@ This is the environment on which the script `ocr.py <./ocr/scripts/ocr.py>`_ was
 - `poppler <https://poppler.freedesktop.org/>`_ which includes ``pdfinfo`` to get number of pages from 
   a *pdf* document if `mdls <https://ss64.com/osx/mdls.html>`_ is not found.
 
+Installation
+============
+To install the `ocr`_ package::
+
+ $ pip install git+https://github.com/raul23/ocr#egg=ocr
+ 
+**Test installation**
+
+1. Test your installation by importing ``ocr`` and printing its
+   version::
+
+   $ python -c "import ocr; print(ocr.__version__)"
+
+2. You can also test that you have access to the ``ocr.py`` script by
+   showing the program's version::
+
+   $ ocr --version
+
 Script options
 ==============
 To display the script `ocr.py <./ocr/scripts/ocr.py>`_ list of options and their descriptions::
