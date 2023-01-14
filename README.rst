@@ -103,6 +103,8 @@ Here are the important steps that the script `ocr.py <./ocr/scripts/ocr.py>`_ fo
 
 Example: convert a ``pdf`` file to ``txt``
 ==========================================
+Through the script ``ocr.py``
+-----------------------------
 Let's say a ``pdf`` file is made up of images and you want to convert specific pages of said ``pdf`` 
 file to ``txt``, then the following command will do the trick::
 
@@ -123,3 +125,7 @@ Sample output::
  Output text file already exists: Book.txt
  Starting OCR...
  OCR successful!
+
+Through the API
+---------------
+TODO
