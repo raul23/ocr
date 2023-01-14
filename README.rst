@@ -25,3 +25,6 @@ This is the environment on which the script `ocr.py <./scripts/ocr.py>`_ was tes
   
 Script options
 ==============
+
+Examples
+========
