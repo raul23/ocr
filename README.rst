@@ -67,7 +67,7 @@ To display the script's list of options and their descriptions::
 
 How OCR is applied
 ==================
-Here are the steps that the script ``ocr.py`` follows when applying OCR to a given document:
+Here are the steps that the script `ocr.py <./scripts/ocr.py>`_ follows when applying OCR to a given document:
 
 1. If the given document is already in *.txt*, then no need to go further!
 2. If it is an image, then OCR is applied directly through the ``tesseract`` command.
