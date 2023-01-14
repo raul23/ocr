@@ -25,6 +25,32 @@ This is the environment on which the script `ocr.py <./scripts/ocr.py>`_ was tes
   
 Script options
 ==============
+To display the script's list of options and their descriptions::
+
+ $ python ocr.py -h
+ usage: python ocr.py [OPTIONS] {input_file} [{output_file}]
+
+ General options:
+   -h, --help                              Show this help message and exit.
+   -v, --version                           Show program's version number and exit.
+   -q, --quiet                             Enable quiet mode, i.e. nothing will be printed.
+   --verbose                               Print various debugging information, e.g. print traceback when there is an exception.
+   --log-level {debug,info,warning,error}  Set logging level. (default: info)
+   --log-format {console,only_msg,simple}  Set logging formatter. (default: only_msg)
+
+ OCR options:
+   -p, --pages PAGES                       "Specify which pages should be processed. When this option is not specified, 
+                                           the text of all pages of the documents is concatenated into the output file. 
+                                           The page specification PAGES contains one or more comma-separated page ranges. 
+                                           A page range is either a page number, or two page numbers separated by a dash. 
+                                           For instance, specification 1-10 outputs pages 1 to 10, and specification 
+                                           1,3,99999-4 outputs pages 1 and 3, followed by all the document pages in 
+                                           reverse order up to page 4."
+                                           Ref.: https://man.archlinux.org/man/djvutxt.1.en
+
+ Input/Output files:
+   input                                   Path of the file (pdf, djvu or image) that will be OCRed.
+   output                                  Path of the file (pdf, djvu or image) that will be OCRed.
 
 Examples
 ========
