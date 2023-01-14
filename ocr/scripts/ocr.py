@@ -11,11 +11,12 @@ import subprocess
 import tempfile
 from pathlib import Path
 
-import ipdb
+from ocr import __version__
+
+# import ipdb
 
 logger = logging.getLogger('ocr')
 logger.setLevel(logging.CRITICAL + 1)
-__version__ = '0.1'
 
 # =====================
 # Default config values
