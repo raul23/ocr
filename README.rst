@@ -24,7 +24,7 @@ This is the environment on which the script `ocr.py <./scripts/ocr.py>`_ was tes
 **Optionally:**
 
 - `poppler <https://poppler.freedesktop.org/>`_ which includes ``pdfinfo`` to get number of pages from 
-  a *pdf* document if ``mdls`` is not found.
+  a *pdf* document if `mdls <https://ss64.com/osx/mdls.html>`_ is not found.
 
 Script options
 ==============
