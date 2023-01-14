@@ -1,6 +1,5 @@
 import argparse
 import ast
-import hashlib
 import logging
 import mimetypes
 import os
@@ -9,15 +8,12 @@ import shlex
 import shutil
 import subprocess
 import tempfile
-from argparse import Namespace
 from pathlib import Path
-from types import SimpleNamespace
 
-import ipdb
+# import ipdb
 
-logger = logging.getLogger('clustering')
+logger = logging.getLogger('ocr')
 __version__ = '0.1'
-_DEFAULT_MSG = ' (default: {})'
 
 # =====================
 # Default config values
@@ -586,7 +582,8 @@ def setup_argparser():
         help='Path of the file (pdf, djvu or image) that will be OCRed.')
     input_output_files_group.add_argument(
         'output', default=OUTPUT_FILE, nargs='*', action=required_length(0, 1),
-        help='Path of the file (pdf, djvu or image) that will be OCRed.')
+        help='Path of the output txt file.'
+             + get_default_message(OUTPUT_FILE))
     return parser
 
 
