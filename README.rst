@@ -134,4 +134,29 @@ Sample output::
 
 Through the API
 ---------------
-TODO
+To convert a *pdf* file to *txt* using the API:
+
+.. code-block:: python
+
+   from ocr.lib import convert
+   
+   txt = convert('/Users/test/Data/ocr/B.pdf', ocr_pages='10-12')
+   # Do something with `txt`
+
+`:information_source:` The variable ``txt`` will contain the text from the conversion.
+
+By default when using the API, the loggers are disabled. If you want to enable them, use the
+function ``setup_log()`` at the beginning of your code before the conversion:
+
+.. code-block:: python
+
+   from ocr.lib import convert, setup_log
+   
+   setup_log(logging_level='INFO')
+   txt = convert('/Users/test/Data/ocr/B.pdf', ocr_pages='10-12')
+   # Do something with `txt`
+   
+Sample output::
+
+ Starting OCR...
+ OCR successful!
