@@ -35,7 +35,6 @@ LOGGING_LEVEL = 'info'
 
 # OCR options
 # ===========
-OCR_ENABLED = 'false'
 OCR_PAGES = None
 OCR_COMMAND = 'tesseract_wrapper'
 
@@ -219,17 +218,6 @@ def add_general_options(parser, add_opts=None, remove_opts=None,
     return parser_general_group
 
 
-def catdoc(input_file, output_file):
-    cmd = f'catdoc "{input_file}"'
-    args = shlex.split(cmd)
-    result = subprocess.run(args, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    # Everything on the stdout must be copied to the output file
-    if result.returncode == 0:
-        with open(output_file, 'w') as f:
-            f.write(result.stdout)
-    return convert_result_from_shell_cmd(result)
-
-
 # Ref.: https://stackoverflow.com/a/28909933
 def command_exists(cmd):
     return shutil.which(cmd) is not None
@@ -274,7 +262,6 @@ def convert_result_from_shell_cmd(old_result):
 
 def convert(input_file, output_file=None,
             ocr_command=OCR_COMMAND,
-            ocr_enabled=OCR_ENABLED,
             ocr_pages=OCR_PAGES,
             **kwargs):
     # also setup cache outside
@@ -304,7 +291,7 @@ def convert(input_file, output_file=None,
             return 1
         # Create output file text if it doesn't exist
         if output_file.exists():
-            logger.info(f"Output text file already exists: {output_file.name}")
+            logger.warning(f"{yellow('Output text file already exists:')} {output_file.name}")
             logger.debug(f"Full path of output text file: '{output_file.absolute()}'")
         else:
             # Create output text file
@@ -345,30 +332,6 @@ def convert(input_file, output_file=None,
 
 def get_default_message(default_value):
     return green(f' (default: {default_value})')
-
-
-def get_file_size(file_path):
-    """
-    This function will return the file size in MB
-    Ref.: https://stackoverflow.com/a/39988702
-    """
-    if os.path.isfile(file_path):
-        file_info = os.stat(file_path)
-        return file_info.st_size/int(1e6)
-    else:
-        logger.error(f"'{file_path}' is not a file\nAborting get_file_size()")
-        return None
-
-
-# Ref.: https://stackoverflow.com/a/59056837/14664104
-def get_hash(file_path):
-    with open(file_path, "rb") as f:
-        file_hash = hashlib.md5()
-        chunk = f.read(8192)
-        while chunk:
-            file_hash.update(chunk)
-            chunk = f.read(8192)
-    return file_hash.hexdigest()
 
 
 # Using Python built-in module mimetypes
@@ -423,22 +386,6 @@ def isalnum_in_file(file_path):
             if isalnum:
                 break
     return isalnum
-
-
-def namespace_to_dict(ns):
-    namspace_classes = [Namespace, SimpleNamespace]
-    if type(ns) in namspace_classes:
-        adict = vars(ns)
-    else:
-        adict = ns
-    for k, v in adict.items():
-        # if isinstance(v, SimpleNamespace):
-        if type(v) in namspace_classes:
-            v = vars(v)
-            adict[k] = v
-        if isinstance(v, dict):
-            namespace_to_dict(v)
-    return adict
 
 
 # OCR on a pdf, djvu document or image
@@ -568,14 +515,6 @@ def print_(msg):
         print(msg)
 
 
-def read_file(filepath):
-    try:
-        with open(filepath, 'r', encoding='utf-8') as f:
-            return f.read()
-    except OSError as e:
-        raise
-
-
 def remove_file(file_path):
     # Ref.: https://stackoverflow.com/a/42641792
     try:
@@ -683,17 +622,6 @@ def setup_log(quiet=False, verbose=False, logging_level=LOGGING_LEVEL,
         logger.debug("Verbose option {}".format("enabled" if verbose else "disabled"))
 
 
-def shorten_param(param_name):
-    """Remove components' prefixes in param_name."""
-    if "__" in param_name:
-        return param_name.rsplit("__", 1)[1]
-    return param_name
-
-
-def size_mb(docs):
-    return sum(len(s.encode("utf-8")) for s in docs) / 1e6
-
-
 # OCR: convert image to text
 def tesseract_wrapper(input_file, output_file):
     # cmd = 'tesseract INPUT_FILE stdout --psm 12 > OUTPUT_FILE || exit 1
@@ -704,15 +632,6 @@ def tesseract_wrapper(input_file, output_file):
                             stderr=subprocess.PIPE,
                             encoding='utf-8',
                             bufsize=4096)
-    return convert_result_from_shell_cmd(result)
-
-
-# macOS equivalent for catdoc
-# See https://stackoverflow.com/a/44003923/14664104
-def textutil(input_file, output_file):
-    cmd = f'textutil -convert txt "{input_file}" -output "{output_file}"'
-    args = shlex.split(cmd)
-    result = subprocess.run(args, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     return convert_result_from_shell_cmd(result)
 
 
