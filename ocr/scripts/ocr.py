@@ -4,7 +4,8 @@ import logging
 import os
 
 from ocr import __version__
-from ocr.lib import convert, blue, green, red, yellow, OCR_PAGES
+from ocr.lib import (convert, setup_log, blue, green, red, yellow,
+                     LOGGING_FORMATTER, LOGGING_LEVEL, OCR_PAGES)
 # __version__ = '0.1.0'
 
 # import ipdb
@@ -20,11 +21,6 @@ logger.setLevel(logging.CRITICAL + 1)
 # ============
 QUIET = False
 OUTPUT_FILE = 'output.txt'
-
-# Logging options
-# ===============
-LOGGING_FORMATTER = 'only_msg'
-LOGGING_LEVEL = 'info'
 
 
 class ArgumentParser(argparse.ArgumentParser):
@@ -212,40 +208,6 @@ def setup_argparser():
         help='Path of the output txt file.'
              + get_default_message(OUTPUT_FILE))
     return parser
-
-
-def setup_log(quiet=False, verbose=False, logging_level=LOGGING_LEVEL,
-              logging_formatter=LOGGING_FORMATTER):
-    if not quiet:
-        for logger_name in ['ocr_script', 'ocr_lib']:
-            logger_ = logging.getLogger(logger_name)
-            if verbose:
-                logger_.setLevel('DEBUG')
-            else:
-                logging_level = logging_level.upper()
-                logger_.setLevel(logging_level)
-            # Create console handler and set level
-            ch = logging.StreamHandler()
-            ch.setLevel(logging.DEBUG)
-            # Create formatter
-            if logging_formatter:
-                formatters = {
-                    'console': '%(name)-10s | %(levelname)-8s | %(message)s',
-                    # 'console': '%(asctime)s | %(levelname)-8s | %(message)s',
-                    'only_msg': '%(message)s',
-                    'simple': '%(levelname)-8s %(message)s',
-                    'verbose': '%(asctime)s | %(name)-10s | %(levelname)-8s | %(message)s'
-                }
-                formatter = logging.Formatter(formatters[logging_formatter])
-                # Add formatter to ch
-                ch.setFormatter(formatter)
-            # Add ch to logger
-            logger_.addHandler(ch)
-        # =============
-        # Start logging
-        # =============
-        logger.debug("Running {} v{}".format(__file__, __version__))
-        logger.debug("Verbose option {}".format("enabled" if verbose else "disabled"))
 
 
 def main():
