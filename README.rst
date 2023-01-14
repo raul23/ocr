@@ -25,7 +25,7 @@ This is the environment on which the script `ocr.py <./scripts/ocr.py>`_ was tes
 
 - `poppler <https://poppler.freedesktop.org/>`_ which includes ``pdfinfo`` to get number of pages from 
   a *pdf* document if ``mdls`` is not found.
-  
+
 Script options
 ==============
 To display the script's list of options and their descriptions::
@@ -62,6 +62,24 @@ To display the script's list of options and their descriptions::
   `:warning:` If the option ``-p`` is not used, then by default all pages from the given document will be OCRed!
 - ``input`` and ``output`` are positional arguments. Thus they must follow directly each other. ``output`` is not required since by
   default the output *txt* file will be saved as ``output.txt`` directly under the working directory.
+  
+  `:warning:` ``output`` needs to have a *.txt* extension!
+
+How OCR is applied
+==================
+Here are the steps that the script ``ocr.py`` follows when applying OCR to a given document:
+
+1. If the given document is already in *.txt*, then no need to go further!
+3. If it is an image, then OCR is applied directly through the ``tesseract`` command.
+4. If it is neither a *djvu* nor a *pdf* file, OCR is abruptly ended with an error.
+5. The specifc pages to be OCRed are computed from the option ``-p, --pages PAGES``,
+6. For each page from the given document:
+
+  i. Convert the page (*djvu* or *pdf*) to an image (*png* or *tif*) through the command ``gs`` (for *pdf*) or ``ddjvu`` (*djvu*)
+  ii. Convert the image to *txt* through the ``tesseract`` command
+  iii. Concatenate the *txt* page with the rest of the converted *txt* pages
+7. Save all the converted *txt* pages to the output file.
+8. The output *txt* file is checked if it actually contains text. If it doesn't, it warns the user that the OCR failed.
 
 Example: convert a ``pdf`` file to ``txt``
 ==========================================
