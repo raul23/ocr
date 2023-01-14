@@ -57,3 +57,19 @@ option ``--page=pagespec``.
 
 Examples
 ========
+Example 1: convert a pdf file to text
+-------------------------------------
+Let's say a ``pdf`` file is made up of images and you want to convert specific pages of said ``pdf`` 
+file to ``txt``, then the following command will do the trick::
+
+ python ocr.py -p 23-30,50,90-92 ~/Data/ocr/Book.pdf Book.txt
+ 
+`:information_source:` Explaining the command
+
+- ``-p 23-30,50,90-92``: specifies that pages 23 to 30, 50 and 90 to 92 from the given ``pdf`` document will be OCRed.
+
+  `:warning:` No spaces when specifying the pages.
+- ``~/Data/ocr/Book.pdf Book.txt``: these are the input and output files, respectively.
+
+  **NOTE:** by default if no output file is specified, then the converted text will be saved as ``output.txt`` 
+  directly under the working directory.
