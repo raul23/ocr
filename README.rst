@@ -143,7 +143,7 @@ To convert a *pdf* file to *txt* using the API:
    txt = convert('/Users/test/Data/ocr/B.pdf', ocr_pages='10-12')
    # Do something with `txt`
 
-`:information_source:` 
+`:information_source:` Explaining the snippet of code
 
 - ``convert(input_file, output_file=None, ocr_command=OCR_COMMAND, ocr_pages=OCR_PAGES)``:
 
