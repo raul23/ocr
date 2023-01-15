@@ -127,7 +127,7 @@ file to *txt*, then the following command will do the trick::
   `:warning:` No spaces when specifying the pages.
 - ``~/Data/ocr/Book.pdf Book.txt``: these are the input and output files, respectively.
 
-  **NOTE:** by default if no output file is specified, then the converted text will be saved as ``output.txt`` 
+  **NOTE:** by default if no output file is specified, then the resultant text will be saved as ``output.txt`` 
   directly under the working directory.
 
 Sample output::
