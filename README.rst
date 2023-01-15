@@ -111,14 +111,14 @@ Example: convert a ``pdf`` file to ``txt``
 ==========================================
 Through the script ``ocr.py``
 -----------------------------
-Let's say a ``pdf`` file is made up of images and you want to convert specific pages of said ``pdf`` 
-file to ``txt``, then the following command will do the trick::
+Let's say a *pdf* file is made up of images and you want to convert specific pages of said *pdf*
+file to *txt*, then the following command will do the trick::
 
  ocr -p 23-30,50,90-92 ~/Data/ocr/Book.pdf Book.txt
  
 `:information_source:` Explaining the command
 
-- ``-p 23-30,50,90-92``: specifies that pages 23 to 30, 50 and 90 to 92 from the given ``pdf`` document will be OCRed.
+- ``-p 23-30,50,90-92``: specifies that pages 23 to 30, 50 and 90 to 92 from the given *pdf* document will be OCRed.
 
   `:warning:` No spaces when specifying the pages.
 - ``~/Data/ocr/Book.pdf Book.txt``: these are the input and output files, respectively.
