@@ -169,7 +169,7 @@ function ``setup_log()`` at the beginning of your code before the conversion:
 
    from ocr.lib import convert, setup_log
    
-   setup_log(logging_level='INFO')
+   setup_log(logging_level='DEBUG')
    txt = convert('/Users/test/Data/ocr/B.pdf', ocr_pages='10-12')
    # Do something with `txt`
    
