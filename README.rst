@@ -1,7 +1,7 @@
 =================================
 OCR documents (pdf, djvu, images)
 =================================
-The script `ocr.py <./ocr/scripts/ocr.py>`_ applies optical character recognition (OCR) to documents (pdf, djvu, images).
+The script `ocr.py <./ocr/scripts/ocr.py>`_ runs optical character recognition (OCR) to documents (pdf, djvu, images).
 It is based on the great `ebook-tools <https://github.com/na--/ebook-tools>`_ which is written in Shell by 
 `na-- <https://github.com/na-->`_.
 
