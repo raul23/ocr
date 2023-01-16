@@ -175,5 +175,13 @@ function ``setup_log()`` at the beginning of your code before the conversion:
    
 Sample output::
 
- Starting OCR...
- OCR successful!
+   Running /Users/test/miniconda3/envs/mlpy37/lib/python3.7/site-packages/ocr/lib.py v0.1.0
+   Verbose option disabled
+   Starting OCR...
+   Result of 'get_pages_in_pdf()' on '/Users/test/Data/ocr/B.pdf':
+   stdout=154, stderr=, returncode=0, args=['mdls', '-raw', '-name', 'kMDItemNumberOfPages', '/Users/test/Data/ocr/B.pdf']
+   The file '/Users/test/Data/ocr/B.pdf' has 154 pages
+   mime type: application/pdf
+   Pages to process: [10, 11, 12]
+   Processing page 1 of 3
+   Running OCR of page 10...
