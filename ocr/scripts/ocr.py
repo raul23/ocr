@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 """
 The script ocr.py runs optical character recognition (OCR) on documents (pdf, djvu, images). It is based on the 
-great ebook-tools which is written in Shell by na--.
+great ebook-tools which is written in shell by na--.
 
 Ref.: https://github.com/na--/ebook-tools
 """
