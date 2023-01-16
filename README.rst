@@ -7,7 +7,7 @@ It is based on the great `ebook-tools <https://github.com/na--/ebook-tools>`_ wh
 
 |
 
-`:star:` Other related projects that I ported from ``ebook-tools`` to Python:
+`:star:` Other related projects based from ``ebook-tools``:
 
 - `convert-to-txt <https://github.com/raul23/convert-to-txt>`_: convert documents (pdf, djvu, epub, word) to txt
 - `find-isbns <https://github.com/raul23/find-isbns>`_: find ISBNs from ebooks (pdf, djvu, epub) or any string given as input to the script
