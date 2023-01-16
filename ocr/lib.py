@@ -1,7 +1,7 @@
 """Library that has useful functions for building other ebook management tools.
 
-This is a Python port of `convert-to-txt.sh` and `lib.sh`_ from `ebook-tools` written in shell by
-`na--`.
+This is a partial Python port of `convert-to-txt.sh` (minus call to `convert_to_txt`) and `lib.sh`_ from 
+`ebook-tools` written in shell by `na--`.
 
 Ref.: 
 - https://github.com/na--/ebook-tools/blob/master/convert-to-txt.sh
