@@ -2,11 +2,9 @@
 OCR documents (pdf, djvu, images)
 =================================
 The script `ocr.py <./ocr/scripts/ocr.py>`_ runs optical character recognition (OCR) on documents (pdf, djvu, images).
-It is based on the great `ebook-tools <https://github.com/na--/ebook-tools>`_ which is written in shell by 
-`na-- <https://github.com/na-->`_.
 
 This is a partial Python port of `convert-to-txt.sh <https://github.com/na--/ebook-tools/blob/master/convert-to-txt.sh>`_ 
-from `ebook-tools` written in shell by `na--`.
+from `ebook-tools <https://github.com/na--/ebook-tools>`_ written in shell by `na-- <https://github.com/na-->`_.
 
 `:star:` Other related projects based on ``ebook-tools``:
 
