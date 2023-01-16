@@ -29,7 +29,7 @@ This is the environment on which the script `ocr.py <./ocr/scripts/ocr.py>`_ was
   
   $ eval `/Applications/DjView.app/Contents/setpath.sh`
    
-**Ref.:** ReadMe from DjVuLibre
+  **Ref.:** ReadMe from DjVuLibre
 
 **Optionally:**
 
