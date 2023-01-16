@@ -5,6 +5,9 @@ The script `ocr.py <./ocr/scripts/ocr.py>`_ runs optical character recognition (
 It is based on the great `ebook-tools <https://github.com/na--/ebook-tools>`_ which is written in shell by 
 `na-- <https://github.com/na-->`_.
 
+This is a partial Python port of `convert-to-txt.sh <https://github.com/na--/ebook-tools/blob/master/convert-to-txt.sh>`_ 
+from `ebook-tools` written in shell by `na--`.
+
 `:star:` Other related projects based on ``ebook-tools``:
 
 - `convert-to-txt <https://github.com/raul23/convert-to-txt>`_: convert documents (pdf, djvu, epub, word) to txt
