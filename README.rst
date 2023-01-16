@@ -25,7 +25,7 @@ This is the environment on which the script `ocr.py <./ocr/scripts/ocr.py>`_ was
 * `DjVuLibre <http://djvu.sourceforge.net/>`_: it includes ``ddjvu`` for 
   converting *djvu* to *tif* image, and ``djvused`` to get number of pages from a *djvu* document
   
-  `:warning:` To access the *djvu* command line utilities and their documentation,you must set the shell variable ``PATH`` and ``MANPATH`` appropriately. This can be achieved by invoking a convenient shell script hidden inside the application bundle::
+  `:warning:` To access the *djvu* command line utilities and their documentation, you must set the shell variable ``PATH`` and ``MANPATH`` appropriately. This can be achieved by invoking a convenient shell script hidden inside the application bundle::
   
   $ eval `/Applications/DjView.app/Contents/setpath.sh`
    
