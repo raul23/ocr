@@ -1,21 +1,18 @@
 =================================
 OCR documents (pdf, djvu, images)
 =================================
-The script `ocr.py <./ocr/scripts/ocr.py>`_ runs optical character recognition (OCR) on documents (pdf, djvu, images).
-
-This is a partial Python port of `convert-to-txt.sh <https://github.com/na--/ebook-tools/blob/master/convert-to-txt.sh>`_ 
-from `ebook-tools <https://github.com/na--/ebook-tools>`_ written in shell by `na-- <https://github.com/na-->`_.
+The script `ocr.py <./ocr/scripts/ocr.py>`_ runs optical character recognition (OCR) on documents (pdf, djvu, images). This is a partial Python port 
+of `convert-to-txt.sh <https://github.com/na--/ebook-tools/blob/master/convert-to-txt.sh>`_ from `ebook-tools <https://github.com/na--/ebook-tools>`_ 
+written in shell by `na-- <https://github.com/na-->`_.
 
 `:star:` Other related Python projects based on ``ebook-tools``:
 
-- `convert-to-txt <https://github.com/raul23/convert-to-txt>`_: convert documents (pdf, djvu, epub, word) to txt
-- `find-isbns <https://github.com/raul23/find-isbns>`_: find ISBNs from ebooks (pdf, djvu, epub) or any string given as input to the script
-- `split-ebooks-into-folders <https://github.com/raul23/split-ebooks-into-folders>`_: split the supplied ebook files into 
-  folders with consecutive names
-- `organize-ebooks <https://github.com/raul23/organize-ebooks>`_: automatically organize folders with potentially huge amounts of 
-  unorganized ebooks. It leverages the previous Python scripts (minus ``split_into_folders``).
-  
-|
+  - `convert-to-txt <https://github.com/raul23/convert-to-txt>`_: convert documents (pdf, djvu, epub, word) to txt
+  - `find-isbns <https://github.com/raul23/find-isbns>`_: find ISBNs from ebooks (pdf, djvu, epub) or any string given as input to the script
+  - `split-ebooks-into-folders <https://github.com/raul23/split-ebooks-into-folders>`_: split the supplied ebook files into 
+    folders with consecutive names
+  - `organize-ebooks <https://github.com/raul23/organize-ebooks>`_: automatically organize folders with potentially huge amounts of 
+    unorganized ebooks. It leverages the previous Python scripts (minus ``split_into_folders``).
 
 .. contents:: **Contents**
    :depth: 3
