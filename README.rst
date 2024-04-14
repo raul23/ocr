@@ -14,11 +14,6 @@ written in shell by `na-- <https://github.com/na-->`_.
   - `organize-ebooks <https://github.com/raul23/organize-ebooks>`_: automatically organize folders with potentially huge amounts of 
     unorganized ebooks. It leverages the previous Python scripts (minus ``split_into_folders``).
 
-.. contents:: **Contents**
-   :depth: 3
-   :local:
-   :backlinks: top
-
 Dependencies
 ============
 This is the environment on which the script `ocr.py <./ocr/scripts/ocr.py>`_ was tested:
