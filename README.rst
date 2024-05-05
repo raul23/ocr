@@ -42,9 +42,11 @@ This is the environment on which the script `ocr.py <./ocr/scripts/ocr.py>`_ was
 
 Installation
 ============
-To install the `ocr <./ocr/>`_ package::
+1. Install first the `dependencies <#dependencies>`_.
 
- $ pip install git+https://github.com/raul23/ocr#egg=ocr
+2. Then you can install the `ocr <./ocr/>`_ package::
+
+   $ pip install git+https://github.com/raul23/ocr#egg=ocr
  
 **Test installation**
 
